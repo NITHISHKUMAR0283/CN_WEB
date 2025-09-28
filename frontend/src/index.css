@@ -1,0 +1,342 @@
+/* Atlas-inspired Professional Theme */
+:root {
+  /* Primary Atlas Green Palette */
+  --atlas-primary: #00684A;        /* Deep forest green */
+  --atlas-primary-light: #13AA52;  /* MongoDB green */
+  --atlas-primary-dark: #004D36;   /* Darker green */
+  --atlas-secondary: #00ED64;      /* Bright accent green */
+
+  /* Neutral & Background Colors */
+  --atlas-white: #FFFFFF;
+  --atlas-gray-50: #FAFBFC;        /* Very light background */
+  --atlas-gray-100: #F5F6F7;       /* Light background */
+  --atlas-gray-200: #E8ECEF;       /* Border color */
+  --atlas-gray-300: #C1C7CD;       /* Disabled state */
+  --atlas-gray-500: #89979B;       /* Text secondary */
+  --atlas-gray-700: #5C6C75;       /* Text primary */
+  --atlas-gray-900: #1C2D32;       /* Text dark */
+
+  /* Functional Colors */
+  --atlas-success: #00ED64;
+  --atlas-warning: #FFE629;
+  --atlas-error: #EB5757;
+  --atlas-info: #1B89BC;
+
+  /* Shadows & Effects */
+  --shadow-soft: 0 2px 8px rgba(0, 104, 74, 0.08);
+  --shadow-medium: 0 4px 16px rgba(0, 104, 74, 0.12);
+  --shadow-strong: 0 8px 32px rgba(0, 104, 74, 0.16);
+
+  /* Typography */
+  --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--atlas-gray-700);
+  background-color: var(--atlas-gray-50);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--atlas-gray-900);
+  margin: 0 0 var(--space-md) 0;
+  line-height: 1.3;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+p {
+  margin: 0 0 var(--space-md) 0;
+  color: var(--atlas-gray-700);
+}
+
+a {
+  color: var(--atlas-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--atlas-primary-dark);
+}
+
+/* Global Utilities */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  min-height: 44px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--atlas-primary) 0%, var(--atlas-primary-light) 100%);
+  color: var(--atlas-white);
+  box-shadow: var(--shadow-soft);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--atlas-primary-dark) 0%, var(--atlas-primary) 100%);
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: var(--atlas-white);
+  color: var(--atlas-primary);
+  border: 2px solid var(--atlas-primary);
+}
+
+.btn-secondary:hover {
+  background: var(--atlas-primary);
+  color: var(--atlas-white);
+}
+
+.btn-success {
+  background: var(--atlas-success);
+  color: var(--atlas-white);
+}
+
+.btn-danger {
+  background: var(--atlas-error);
+  color: var(--atlas-white);
+}
+
+/* Cards */
+.card {
+  background: var(--atlas-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: var(--space-lg);
+  transition: all 0.2s ease;
+  border: 1px solid var(--atlas-gray-200);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-2px);
+}
+
+/* Form Elements */
+.form-group {
+  margin-bottom: var(--space-lg);
+}
+
+.form-label {
+  display: block;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+  color: var(--atlas-gray-900);
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid var(--atlas-gray-200);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-family: var(--font-body);
+  transition: all 0.2s ease;
+  background: var(--atlas-white);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--atlas-primary);
+  box-shadow: 0 0 0 3px rgba(0, 104, 74, 0.1);
+}
+
+/* Loading & States */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2xl);
+  color: var(--atlas-gray-500);
+}
+
+.error {
+  background: rgba(235, 87, 87, 0.1);
+  color: var(--atlas-error);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(235, 87, 87, 0.2);
+  margin-bottom: var(--space-lg);
+}
+
+.success {
+  background: rgba(0, 237, 100, 0.1);
+  color: var(--atlas-success);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 237, 100, 0.2);
+  margin-bottom: var(--space-lg);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 var(--space-lg);
+  }
+
+  h1 {
+    font-size: 2.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--space-md);
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  h3 {
+    font-size: 1.375rem;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    min-height: 40px;
+  }
+
+  .card {
+    padding: var(--space-md);
+  }
+
+  .form-control {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 var(--space-sm);
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  h4 {
+    font-size: 1.125rem;
+  }
+
+  .btn {
+    padding: 8px 16px;
+    font-size: 13px;
+    min-height: 36px;
+  }
+
+  .card {
+    padding: var(--space-sm);
+  }
+
+  .form-control {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .form-group {
+    margin-bottom: var(--space-md);
+  }
+}
+
+code {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  background: var(--atlas-gray-100);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  color: var(--atlas-primary);
+}
