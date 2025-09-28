@@ -1,0 +1,53 @@
+services:
+  # Backend API
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: event-registration-backend
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 5000
+      MONGODB_URI: mongodb+srv://dbuser:ASNRangusumathi@dreamfit-cluster.wonstkw.mongodb.net/event_registration?retryWrites=true&w=majority&appName=DreamFit-Cluster
+      JWT_SECRET: 70d179c93b27b10b8849f631ca943b8976447450b98b78f6471f09308c535cc9
+    ports:
+      - "5000:5000"
+    # Using MongoDB Atlas
+    networks:
+      - event-registration-network
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:5000/api/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) })"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Frontend React App
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: event-registration-frontend
+    restart: unless-stopped
+    environment:
+      REACT_APP_API_URL: http://localhost:5000/api
+    ports:
+      - "3000:3000"
+    # Frontend depends on backend
+    depends_on:
+      - backend
+    networks:
+      - event-registration-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  event-registration-network:
+    driver: bridge
+
+# No volumes needed - using MongoDB Atlas
